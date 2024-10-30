@@ -2,7 +2,8 @@ import Modal from "react-modal";
 import React from "react";
 
 import useMovieDetailModalStore from "../../stores/useMovieDetailModalStore";
-import { MovieImage, Title, Content, Overview, MovieDetailContent } from "./style"
+import PersonCard from "./PersonCard";
+import { MovieImage, Content, MovieDetailContent, CardWapper, Overview } from "./style";
 
 
 const ModalContainer = {
@@ -12,7 +13,7 @@ const ModalContainer = {
       transform: "translate(-50%, -50%)",
       width: "80vw",
       height: "80vh",
-      padding: "0",
+      padding: "15px",
       backgroundColor: "black"
     },
     overlay: {
@@ -26,6 +27,7 @@ const MovieDetailModal = () => {
     const closeModal = useMovieDetailModalStore((state) => state.closeModal)
     console.log("movieDetail", movieDetail)
 
+    const {poster_path, title, overview, credits, } = movieDetail;
     return (
         <Modal
         isOpen={isOpen}
@@ -35,24 +37,32 @@ const MovieDetailModal = () => {
         contentLabel="MovieDetailModal"
       >
         <Content>
-            <MovieImage src={`https://image.tmdb.org/t/p/original${movieDetail.poster_path}`} alt={movieDetail.title}></MovieImage>
+            <MovieImage src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={title}></MovieImage>
             <MovieDetailContent>
-                <Title>{movieDetail.title}</Title>
+                <h2>{title}</h2>
                 <section>
                   簡介：
-                  <Overview>{movieDetail.overview}</Overview>
+                  <Overview>{overview}</Overview>
                 </section>
                 <section>
                   主要演員：
-                  <div>{movieDetail.overview}</div>
+                  <CardWapper>
+                    {credits?.cast?.length > 0 ? (
+                      credits.cast.map((cast) => <PersonCard data={cast} />)
+                    ) : null}
+                  </CardWapper>
                 </section>
                 <section>
                   電影工作人員：
-                  <Overview>{movieDetail.overview}</Overview>
+                  <CardWapper>
+                    {credits?.crew?.length > 0 ? (
+                      credits.crew.map((crew) => <PersonCard data={crew} />)
+                    ) : null}
+                  </CardWapper>
                 </section>
                 <section>
                   評論：
-                  <Overview>{movieDetail.overview}</Overview>
+                  <p>{overview}</p>
                 </section>
             </MovieDetailContent>
         </Content>
