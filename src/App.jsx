@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import ToWatchList from './pages/ToWatchList';
+import MovieDetailModal from './components/MovieDetailModal';
 
 
 const Header = styled.div`
@@ -51,6 +52,7 @@ function App() {
           <Route path='/toWatchList' element={<ToWatchList />} />
         </Routes>
       </Content>
+      <MovieDetailModal />   
     </div>
   )
 }
