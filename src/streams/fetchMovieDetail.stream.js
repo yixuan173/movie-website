@@ -36,7 +36,6 @@ const fetchMovieDetail = async (id) => {
         }
 
       const { reviews, title, overview, poster_path, id: movieId, credits } = data;
-      console.log(credits?.cast, filterUnusefulData(credits?.cast))
       const movieDetail = {
         reviews,
         title,
