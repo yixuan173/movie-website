@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    margin-top: 5rem;
-`;
-
 export const PageTitle = styled.h1`
     color: #fff;
 `;
 
 export const MoviesContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 300px);
     gap: 0.5rem;
+    grid-template-columns: repeat(4, 200px);
+
+    @media (max-width: 880px) {
+        grid-template-columns: repeat(2, 250px);
+    }
+
+    @media (max-width: 560px) {
+        grid-template-columns: repeat(2, 160px);
+    }
+
+    @media (max-width: 350px) {
+        grid-template-columns: repeat(1, 200px);
+    }
 `;
 
 export const MovieTitle = styled.h3`

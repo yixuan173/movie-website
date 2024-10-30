@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Container, MovieImage, GradientOverlay, MovieTitle, ImageWapper, MoviesContainer, PageTitle } from "./style"
+import { MovieImage, GradientOverlay, MovieTitle, ImageWapper, MoviesContainer, PageTitle } from "./style"
 import fetchMovies from "../../streams/fetchMovies.stream"
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Container>
+    <div>
       <PageTitle> 熱門電影 </PageTitle>
       <MoviesContainer>      
         {movies.length > 0 ? (
@@ -37,7 +37,7 @@ const Home = () => {
           ))
         ) : null}
       </MoviesContainer>
-    </Container>
+    </div>
   );
 };
 

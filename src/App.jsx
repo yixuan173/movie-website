@@ -7,17 +7,17 @@ import Home from './pages/Home';
 import Search from './pages/Search';
 import ToWatchList from './pages/ToWatchList';
 
-const Layout = styled.div`
-`;
 
 const Header = styled.div`
   display: flex;
   justify-content: center;
-  margin: 1rem;
+  margin: 1rem 0;
   gap: 4rem;
 `;
 
 const Content = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const Icon = styled.div`
@@ -26,7 +26,7 @@ const Icon = styled.div`
 
 function App() {
   return (
-    <Layout>
+    <div>
       <Header>
         <Link to="/">        
           <Icon>
@@ -51,7 +51,7 @@ function App() {
           <Route path='/toWatchList' element={<ToWatchList />} />
         </Routes>
       </Content>
-    </Layout>
+    </div>
   )
 }
 
