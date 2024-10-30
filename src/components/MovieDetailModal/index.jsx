@@ -1,8 +1,8 @@
 import Modal from "react-modal";
-import React from "react";
 
 import useMovieDetailModalStore from "../../stores/useMovieDetailModalStore";
 import PersonCard from "./PersonCard";
+import ReviewCard from "./ReviewCard";
 import { MovieImage, Content, MovieDetailContent, CardWapper, Overview } from "./style";
 
 
@@ -27,7 +27,7 @@ const MovieDetailModal = () => {
     const closeModal = useMovieDetailModalStore((state) => state.closeModal)
     console.log("movieDetail", movieDetail)
 
-    const {poster_path, title, overview, credits, } = movieDetail;
+    const { poster_path, title, overview, credits, reviews } = movieDetail;
     return (
         <Modal
         isOpen={isOpen}
@@ -48,7 +48,7 @@ const MovieDetailModal = () => {
                   主要演員：
                   <CardWapper>
                     {credits?.cast?.length > 0 ? (
-                      credits.cast.map((cast) => <PersonCard data={cast} />)
+                      credits.cast.map((cast) => <PersonCard data={cast} key={cast.id} />)
                     ) : null}
                   </CardWapper>
                 </section>
@@ -56,13 +56,17 @@ const MovieDetailModal = () => {
                   電影工作人員：
                   <CardWapper>
                     {credits?.crew?.length > 0 ? (
-                      credits.crew.map((crew) => <PersonCard data={crew} />)
+                      credits.crew.map((crew) => <PersonCard data={crew} key={crew.id} />)
                     ) : null}
                   </CardWapper>
                 </section>
                 <section>
                   評論：
-                  <p>{overview}</p>
+                  <CardWapper>
+                    {reviews?.results?.length > 0 ? (
+                      reviews.results.map((review) => <ReviewCard data={review} key={review.id} />)
+                    ) : null}
+                  </CardWapper>
                 </section>
             </MovieDetailContent>
         </Content>

@@ -50,8 +50,47 @@ export const CardWapper = styled.div`
     gap: 10px;
 `;
 
-export const PersonCardWrapper = styled.div`
+export const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+export const ReviewCardWrapper = styled(CardWrapper)`
+    min-width: 250px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+`;
+
+export const ReviewCardHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+`;
+
+export const AuthorInfo = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`;
+
+export const CreateTime = styled.div`
+    font-size: 10px;
+    color: #adb5bd;
+`;
+
+export const ReviewCardContent = styled(CardWrapper)`
+    gap: 5px;
+`;
+
+export const ReviewText = styled.div`
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
