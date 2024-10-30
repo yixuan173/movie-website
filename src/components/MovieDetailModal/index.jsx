@@ -25,7 +25,6 @@ const MovieDetailModal = () => {
     const isOpen = useMovieDetailModalStore((state) => state.isOpen)
     const movieDetail = useMovieDetailModalStore((state) => state.movieDetail)
     const closeModal = useMovieDetailModalStore((state) => state.closeModal)
-    console.log("movieDetail", movieDetail)
 
     const { poster_path, title, overview, credits, reviews } = movieDetail;
     return (

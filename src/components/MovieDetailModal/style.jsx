@@ -57,6 +57,7 @@ export const CardWrapper = styled.div`
 
 export const ReviewCardWrapper = styled(CardWrapper)`
     min-width: 250px;
+    max-width: 250px;
     background-color: #fff;
     color: #000;
     border-radius: 10px;
