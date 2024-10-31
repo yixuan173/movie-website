@@ -1,9 +1,13 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-const useMovieListStore = create(devtools((set) => ({
+const initialState = {
     toWatchList: [],
     toWatchMovieIdSet: new Set(),
+  }
+
+const useToWatchListStore = create(devtools((set) => ({
+    ...initialState,
     addToWatchList: (movieInfo) => {
         set((state) => ({
             toWatchList: [...state.toWatchList, movieInfo],
@@ -20,6 +24,9 @@ const useMovieListStore = create(devtools((set) => ({
             };
         })
     },
+    resetToWatchList: () => {
+        set(initialState)
+    },
 })))
 
-export default useMovieListStore;
+export default useToWatchListStore;

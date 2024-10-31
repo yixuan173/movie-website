@@ -1,11 +1,11 @@
 import { ToWatchButtonWrapper, ToWatchBtn } from "./style";
-import useMovieListStore from "../../stores/useToWatchListStore";
+import resetToWatchList from "../../stores/useToWatchListStore";
 
 
 const ToWatchButton = ({ movieInfo }) => {
-    const toWatchMovieIdSet = useMovieListStore((state) => state.toWatchMovieIdSet);
-    const addToWatchList = useMovieListStore((state) => state.addToWatchList);
-    const removeToWatchList = useMovieListStore((state) => state.removeToWatchList);
+    const toWatchMovieIdSet = resetToWatchList((state) => state.toWatchMovieIdSet);
+    const addToWatchList = resetToWatchList((state) => state.addToWatchList);
+    const removeToWatchList = resetToWatchList((state) => state.removeToWatchList);
 
     const handleRemoveToWatchLise = (e) => {
         e.stopPropagation();
@@ -19,7 +19,7 @@ const ToWatchButton = ({ movieInfo }) => {
     
     return (
         <ToWatchButtonWrapper>
-            {toWatchMovieIdSet?.has(movieInfo.id) ? (
+            {toWatchMovieIdSet.has(movieInfo.id) ? (
                 <ToWatchBtn onClick={handleRemoveToWatchLise}><ion-icon name="eye" size="large"></ion-icon></ToWatchBtn>
             ) : (
                 <ToWatchBtn onClick={handleAddToWatchLise}><ion-icon name="eye-off" size="large"></ion-icon></ToWatchBtn>
