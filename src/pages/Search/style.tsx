@@ -76,6 +76,7 @@ export const Arrow = styled.button`
     border: none;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 36px;
     height: 36px;
     cursor: pointer;
@@ -94,4 +95,9 @@ export const PaginationItem = styled.button<{$isActive: boolean}>`
 
 `;
 
+export const NoSearchResult = styled.div`
+    color: #fff;
+    font-size: 32px;
+    font-weight: bolder;
+`;
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { PaginationWrapper, Arrow, PaginationItem } from "./style";
 
-const Pagination = ({ totalItems, itemsPerPage, onPageChange, currentPage }) => {
+const Pagination = ({ totalItems, itemsPerPage, setCurrentPage, currentPage }) => {
   const [showPageList, setShowPageList] = useState([]);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -27,7 +27,7 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange, currentPage }) => 
   }
 
   const goToPage = (page) => {
-    onPageChange(page);
+    setCurrentPage(page);
   };
 
   const handleClickArrowBtn = (isNext) => {
