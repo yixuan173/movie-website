@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react"
 
 import MovieListBlock from "../../components/MovieListBlock"
+import MovieListBlockSkeleton from "../../components/Skeleton/MovieListBlockSkeleton"
 import Pagination from "./Pagination"
 import SortSelect from "./SortSelect"
 import useFetchSearchPageResultData from "./hooks/useFetchSearchResults"
@@ -48,9 +49,9 @@ const Search = () => {
         <SearchButton onClick={handleClickSearch}><ion-icon name="search" size="large"></ion-icon></SearchButton>
       </SearchBarWapper>
       {isFetching && (
-        <div>Loading</div>
+        <MovieListBlockSkeleton />
       )}
-      {totalResultCount > 0 ? (
+      {!isFetching && totalResultCount > 0 ? (
         <>
           <SeatchResultWapper>
             <SearchInfoBlock>
