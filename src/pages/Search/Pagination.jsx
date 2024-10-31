@@ -2,14 +2,12 @@ import { useEffect, useState } from 'react';
 
 import { PaginationWrapper, Arrow, PaginationItem } from "./style";
 
-const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({ totalItems, itemsPerPage, onPageChange, currentPage }) => {
   const [showPageList, setShowPageList] = useState([]);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   useEffect(() => {
     getPageList();
-    window.scroll({ top: 0, behavior: 'smooth' })
   }, [currentPage])
 
   const getPageList = () => {
@@ -29,7 +27,6 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
   }
 
   const goToPage = (page) => {
-    setCurrentPage(page);
     onPageChange(page);
   };
 

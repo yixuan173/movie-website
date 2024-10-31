@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 
 import fetchMovieSearchResults from "../../streams/fetchMovieSearchResults.stream"
 import MovieListBlock from "../../components/MovieListBlock"
@@ -7,6 +7,7 @@ import { Wapper, SearchBarWapper, SearchInput, SearchButton, SeatchResultWapper,
 
 const Search = () => {
   const [ searchKeyword, setSearchKeyword ] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [ movieSearchResults, setMovieSearchResults ] = useState([]);
   const [ totalResultCount, setTotalResultCount ] = useState(0);
   const timerRef = useRef(null);
@@ -18,22 +19,33 @@ const Search = () => {
     
     timerRef.current = setTimeout(() => {
       setSearchKeyword(e.target.value);
-    }, 400);
+    }, 300);
   }
 
+  useEffect(() => {
+    window.scroll({ top: 0, behavior: 'smooth' })
+  }, [currentPage])
+
   const getSearchResult = async (page) => {
-    const searchResults = await fetchMovieSearchResults(searchKeyword, page)
-    setMovieSearchResults(searchResults.results);
-    setTotalResultCount(searchResults.total_results);
+    try {
+      const searchResults = await fetchMovieSearchResults(searchKeyword, page)
+      setCurrentPage(page);
+      setMovieSearchResults(searchResults.results);
+      setTotalResultCount(searchResults.total_results);
+    } catch (error) {
+      console.error(`getSearchResult Failed: Reason: ${error}`)
+    }
   }
 
   const handleClickSearch = () => {
     getSearchResult(1);
+    setCurrentPage(1)
   }
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       getSearchResult(1)
+      setCurrentPage(1)
   }
   }
 
@@ -51,7 +63,7 @@ const Search = () => {
             </SearchInfoBlock>
             <MovieListBlock movieList={movieSearchResults} />
           </SeatchResultWapper>
-          <Pagination totalItems={totalResultCount} itemsPerPage={20} onPageChange={getSearchResult}/>
+          <Pagination totalItems={totalResultCount} itemsPerPage={20} onPageChange={getSearchResult} currentPage={currentPage}/>
         </>
       ) : null}
     </Wapper>
