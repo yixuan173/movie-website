@@ -35,8 +35,9 @@ const fetchMovieDetail = async (id) => {
           throw new Error(`fetchMovieDetail Error: No Data.`);
         }
 
-      const { reviews, title, overview, poster_path, id: movieId, credits } = data;
+      const { reviews, title, overview, poster_path, id: movieId, credits, release_date } = data;
       const movieDetail = {
+        release_date,
         reviews,
         title,
         overview,

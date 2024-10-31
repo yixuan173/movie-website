@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import useMovieDetailModalStore from "../../stores/useMovieDetailModalStore";
 import PersonCard from "./PersonCard";
 import ReviewCard from "./ReviewCard";
-import { MovieImage, Content, MovieDetailContent, CardWapper, Overview } from "./style";
+import { MovieImage, Content, MovieDetailContent, CardWapper, InfoText } from "./style";
 
 
 const ModalContainer = {
@@ -26,7 +26,7 @@ const MovieDetailModal = () => {
     const movieDetail = useMovieDetailModalStore((state) => state.movieDetail)
     const closeModal = useMovieDetailModalStore((state) => state.closeModal)
 
-    const { poster_path, title, overview, credits, reviews } = movieDetail;
+    const { poster_path, title, overview, credits, reviews, release_date } = movieDetail;
     return (
         <Modal
         isOpen={isOpen}
@@ -40,8 +40,12 @@ const MovieDetailModal = () => {
             <MovieDetailContent>
                 <h2>{title}</h2>
                 <section>
+                  上映日期：
+                  <InfoText>{release_date}</InfoText>
+                </section>
+                <section>
                   簡介：
-                  <Overview>{overview}</Overview>
+                  <InfoText>{overview}</InfoText>
                 </section>
                 <section>
                   主要演員：

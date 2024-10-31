@@ -28,7 +28,7 @@ export const MovieImage = styled.img`
     object-fit: cover;
 `;
 
-export const Overview = styled.span`
+export const InfoText = styled.span`
     display: inline-block;
 `;
 
