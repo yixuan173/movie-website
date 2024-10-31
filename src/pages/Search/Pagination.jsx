@@ -11,6 +11,11 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage, currentPage }) =
   }, [currentPage])
 
   const getPageList = () => {
+    if (totalPages < 5) {
+      setShowPageList(Array.from({length: totalPages}, (_, index) => index + 1));
+      return;
+    }
+
     if (currentPage <= 3) {
         setShowPageList([1, 2, 3, 4, 5]);
         return;

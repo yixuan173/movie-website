@@ -62,7 +62,7 @@ const Search = () => {
           </SeatchResultWapper>
           <Pagination totalItems={totalResultCount} itemsPerPage={20} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
         </>
-      ) : searchKeyword && <NoSearchResult>無搜尋結果</NoSearchResult>}
+      ) : searchKeyword && totalResultCount === 0 && <NoSearchResult>無搜尋結果</NoSearchResult>}
     </Wapper>
   );
 }
