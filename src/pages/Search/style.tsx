@@ -37,13 +37,29 @@ export const SeatchResultWapper = styled.div`
 
 export const SearchInfoBlock = styled.div`
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 350px) {
+        flex-direction: column;
+        gap: 10px;
+    }
+`;
+
+export const SelectWrapper = styled.div`
+    width: 200px;
+
+    @media (max-width: 560px) {
+        width: 150px;
+    }
 `;
 
 export const SearchInfo = styled.span`
     color: #fff;
     font-size: 20px;
 
-     @media (max-width: 560px) {
+    @media (max-width: 560px) {
         font-size: 16px;
     }
 `;
