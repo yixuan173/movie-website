@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 
 import fetchMovieSearchResults from "../../streams/fetchMovieSearchResults.stream"
 import MovieListBlock from "../../components/MovieListBlock"
+import Pagination from "./Pagination"
 import { Wapper, SearchBarWapper, SearchInput, SearchButton, SeatchResultWapper, SearchInfoBlock, SearchInfo } from "./style"
 
 const Search = () => {
@@ -20,11 +21,16 @@ const Search = () => {
     }, 300);
   }
 
-  const handleClickSearch = async () => {
-    const searchResults = await fetchMovieSearchResults(searchKeyword, "1")
+  const getSearchResult = async (page) => {
+    const searchResults = await fetchMovieSearchResults(searchKeyword, page)
     setMovieSearchResults(searchResults.results);
     setTotalResultCount(searchResults.total_results);
   }
+
+  const handleClickSearch = async () => {
+    await getSearchResult(1);
+  }
+
   return (
     <Wapper>
       <SearchBarWapper>
@@ -32,12 +38,15 @@ const Search = () => {
         <SearchButton onClick={handleClickSearch}><ion-icon name="search" size="large"></ion-icon></SearchButton>
       </SearchBarWapper>
       {totalResultCount > 0 ? (
-        <SeatchResultWapper>
-          <SearchInfoBlock>
-            <SearchInfo>搜尋結果：{totalResultCount} 筆</SearchInfo>
-          </SearchInfoBlock>
-          <MovieListBlock movieList={movieSearchResults} />
-        </SeatchResultWapper>
+        <>
+          <SeatchResultWapper>
+            <SearchInfoBlock>
+              <SearchInfo>搜尋結果：{totalResultCount} 筆</SearchInfo>
+            </SearchInfoBlock>
+            <MovieListBlock movieList={movieSearchResults} />
+          </SeatchResultWapper>
+          <Pagination totalItems={totalResultCount} itemsPerPage={20} onPageChange={getSearchResult}/>
+        </>
       ) : null}
     </Wapper>
   );

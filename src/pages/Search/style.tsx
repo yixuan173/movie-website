@@ -18,7 +18,8 @@ export const SearchBarWapper = styled.div`
 `;
 
 export const SearchInput = styled.input`
-    width: 250px;
+    font-size: 16px;
+    width: 230px;
     height: 30px;
 `;
 
@@ -46,3 +47,35 @@ export const SearchInfo = styled.span`
         font-size: 16px;
     }
 `;
+
+export const PaginationWrapper = styled.div`
+    display: flex;
+    gap: 8px; 
+    align-items: center;
+`;
+
+export const Arrow = styled.button`
+    background-color: #000;
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+`;
+
+export const PaginationItem = styled.button<{$isActive: boolean}>`
+    background-color: ${({ $isActive }) => $isActive ? "#fff" : "#000"};
+    color: ${({ $isActive }) => $isActive ? "#000" : "#fff"};
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 100%;
+    font-weight: bolder;
+    font-size: 16px;
+    cursor: ${({ $isActive }) => $isActive ? "default" : "pointer"};
+
+`;
+
+
