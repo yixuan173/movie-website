@@ -18,6 +18,10 @@ export const MoviesContainer = styled.div`
     }
 `;
 
+export const MovieCardWapper = styled.div`
+    position: relative;
+`;
+
 export const MovieTitle = styled.h3`
     overflow: hidden;
     text-overflow: ellipsis;
@@ -61,4 +65,17 @@ export const GradientOverlay = styled.div`
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 85%);
   border-radius: 16px;
+`;
+
+export const ToWatchButtonWrapper = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+`;
+
+export const ToWatchBtn = styled.button`
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 `;

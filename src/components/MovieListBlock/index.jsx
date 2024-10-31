@@ -1,5 +1,5 @@
-
-import { MovieImage, GradientOverlay, MovieTitle, ImageWapper, MoviesContainer } from "./style";
+import ToWatchButton from "./ToWatchButton";
+import { MovieImage, GradientOverlay, MovieTitle, ImageWapper, MoviesContainer, MovieCardWapper } from "./style";
 import useMovieDetailModalStore from "../../stores/useMovieDetailModalStore";
 
 const MovieListBlock = ({movieList}) => {
@@ -19,13 +19,14 @@ const MovieListBlock = ({movieList}) => {
         <MoviesContainer>      
         {movieList?.length > 0 ? (
           movieList.map(({id, poster_path, title}) => (
-            <div key={id} onClick={() => handleClickMovie(id)}>
+            <MovieCardWapper key={id} onClick={() => handleClickMovie(id)}>
               <ImageWapper>
                 <MovieImage src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={title} />
                 <GradientOverlay />
               </ImageWapper>
               <MovieTitle>{title}</MovieTitle>
-            </div>
+              <ToWatchButton movieInfo={{id, poster_path, title}}/>
+            </MovieCardWapper>
           ))
         ) : null}
       </MoviesContainer>
