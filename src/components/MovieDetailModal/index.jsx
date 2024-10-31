@@ -26,7 +26,7 @@ const MovieDetailModal = () => {
     const movieDetail = useMovieDetailModalStore((state) => state.movieDetail)
     const closeModal = useMovieDetailModalStore((state) => state.closeModal)
 
-    const { poster_path, title, overview, credits, reviews, release_date } = movieDetail;
+    const { poster_path, title, overview, credits, reviews, release_date, vote_average } = movieDetail;
     return (
         <Modal
         isOpen={isOpen}
@@ -39,6 +39,10 @@ const MovieDetailModal = () => {
             <MovieImage src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={title}></MovieImage>
             <MovieDetailContent>
                 <h2>{title}</h2>
+                <section>
+                  評分：
+                  <InfoText>{`(${vote_average}/10)`}</InfoText>
+                </section>
                 <section>
                   上映日期：
                   <InfoText>{release_date}</InfoText>
