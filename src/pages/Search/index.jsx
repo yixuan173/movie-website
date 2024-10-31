@@ -18,7 +18,7 @@ const Search = () => {
     
     timerRef.current = setTimeout(() => {
       setSearchKeyword(e.target.value);
-    }, 300);
+    }, 400);
   }
 
   const getSearchResult = async (page) => {
@@ -27,14 +27,20 @@ const Search = () => {
     setTotalResultCount(searchResults.total_results);
   }
 
-  const handleClickSearch = async () => {
-    await getSearchResult(1);
+  const handleClickSearch = () => {
+    getSearchResult(1);
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      getSearchResult(1)
+  }
   }
 
   return (
     <Wapper>
       <SearchBarWapper>
-        <SearchInput type="text" placeholder="Search for a movie..." onChange={(e) => onChangeKeyword(e)}></SearchInput>
+        <SearchInput type="text" placeholder="Search for a movie..." onChange={onChangeKeyword} onKeyDown={handleKeyDown} ></SearchInput>
         <SearchButton onClick={handleClickSearch}><ion-icon name="search" size="large"></ion-icon></SearchButton>
       </SearchBarWapper>
       {totalResultCount > 0 ? (
