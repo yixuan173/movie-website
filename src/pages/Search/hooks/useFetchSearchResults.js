@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import fetchMovieSearchResults from "../../../streams/fetchMovieSearchResults.stream"
+import { handleSortedSearchResults } from "../../../utilities/sortMovie.utility"
 
 /**
  * 取得電影搜尋結果
@@ -14,38 +15,11 @@ const useFetchSearchPageResultData = ({searchKeyword, currentPage, selectedSort}
     const [ movieSearchResults, setMovieSearchResults ] = useState([]);
     const [ totalResultCount, setTotalResultCount ] = useState(0);
 
-    const handleSortedSearchResults = (searchResults) => {
-        let sortedResults = [...searchResults];
-    
-        switch (selectedSort?.value) {
-          case "dateDESC": {
-            sortedResults.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
-            break;
-          }
-          case "dateASC": {
-            sortedResults.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
-            break;
-          }
-          case "rateDESC": {
-            sortedResults.sort((a, b) => b.vote_average - a.vote_average);
-            break;
-          }
-          case "rateASC": {
-            sortedResults.sort((a, b) => a.vote_average - b.vote_average);
-            break;
-          }
-          default: {
-            break;
-          }
-        }
-        setMovieSearchResults(sortedResults);
-      }
-
     const getSearchResult = async () => {
         setIsFetching(true)
         try {
           const { results, total_results} = await fetchMovieSearchResults(searchKeyword, currentPage)
-          handleSortedSearchResults(results)
+          handleSortedSearchResults(results, selectedSort, setMovieSearchResults)
           setTotalResultCount(total_results);
         } catch (error) {
           console.error(`getSearchResult Failed: Reason: ${error}`)
@@ -55,7 +29,7 @@ const useFetchSearchPageResultData = ({searchKeyword, currentPage, selectedSort}
 
     useEffect(() => {
         if (selectedSort) {
-          handleSortedSearchResults(movieSearchResults);
+          handleSortedSearchResults(movieSearchResults, selectedSort, setMovieSearchResults);
         }
       }, [ selectedSort ]);
 

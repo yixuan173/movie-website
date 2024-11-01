@@ -5,7 +5,7 @@ import MovieListBlockSkeleton from "../../components/Skeleton/MovieListBlockSkel
 import Pagination from "./Pagination"
 import SortSelect from "../../components/SortSelect"
 import useFetchSearchPageResultData from "./hooks/useFetchSearchResults"
-import { sortOptions } from "./config"
+import { sortOptions } from "../../configs/sortOptions"
 import { Wapper, SearchBarWapper, SearchInput, SearchButton, SeatchResultWapper, SearchInfoBlock, SearchInfo, NoSearchResult } from "./style"
 
 const Search = () => {
