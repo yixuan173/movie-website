@@ -20,19 +20,19 @@ export const MoviesContainer = styled.div`
 
 export const ImageWapper = styled.div`
     width: 100%;
-    height: 300px;
+    height: 290px;
     overflow: hidden;
     border-radius: 16px;
 
     @media (max-width: 880px) {
-        height: 360px;
+        height: 350px;
     }
 
     @media (max-width: 560px) {
-        height: 250px;
+        height: 260px;
     }
 
     @media (max-width: 350px) {
-        height: 300px;
+        height: 290px;
     }
 `;
