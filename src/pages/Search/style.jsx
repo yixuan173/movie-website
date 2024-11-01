@@ -74,7 +74,7 @@ export const Arrow = styled.button`
     cursor: pointer;
 `;
 
-export const PaginationItem = styled.button<{$isActive: boolean}>`
+export const PaginationItem = styled.button`
     background-color: ${({ $isActive }) => $isActive ? "#fff" : "#000"};
     color: ${({ $isActive }) => $isActive ? "#000" : "#fff"};
     width: 32px;
