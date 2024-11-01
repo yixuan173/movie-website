@@ -47,14 +47,6 @@ export const SearchInfoBlock = styled.div`
     }
 `;
 
-export const SelectWrapper = styled.div`
-    width: 200px;
-
-    @media (max-width: 560px) {
-        width: 150px;
-    }
-`;
-
 export const SearchInfo = styled.span`
     color: #fff;
     font-size: 20px;
