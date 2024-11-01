@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
 export const MovieCardWapper = styled.div`
+    height: 100%;
+    display: flex;
     position: relative;
+    flex-direction: column;
 `;
 
-export const MovieTitle = styled.h3`
+export const MovieTitle = styled.p`
     overflow: hidden;
+    font-size: 18px;
+    font-weight: bolder;
+    margin-top: 5px;
     text-overflow: ellipsis;
     white-space: nowrap;
     height: 2rem;
@@ -15,22 +21,10 @@ export const MovieTitle = styled.h3`
 export const ImageWapper = styled.div`
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 100%;
     overflow: hidden;
     border-radius: 16px;
     background-color: #e9ecef;
-
-    @media (max-width: 880px) {
-        height: 360px;
-    }
-
-    @media (max-width: 560px) {
-        height: 250px;
-    }
-
-    @media (max-width: 350px) {
-        height: 300px;
-    }
 `;
 
 export const MovieImage = styled.img`

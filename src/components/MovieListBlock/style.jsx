@@ -18,4 +18,19 @@ export const MoviesContainer = styled.div`
     }
 `;
 
+export const MovieCardWrapper = styled.div`
+    width: 100%;
+    height: 340px;
+
+    @media (max-width: 880px) {
+        height: 400px;
+    }
+    @media (max-width: 560px) {
+        height: 310px;
+    }
+    @media (max-width: 350px) {
+        height: 340px;
+    }
+`;
+
 

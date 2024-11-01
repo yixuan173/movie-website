@@ -1,16 +1,18 @@
-import { MoviesContainer } from "./style";
+import { MoviesContainer, MovieCardWrapper } from "./style";
 import MovieCard from "../MovieCard"
 
 const MovieListBlock = ({movieList}) => {
     return (
         <MoviesContainer>  
           {movieList?.length > 0 ? movieList.map((movie) => (
-             <MovieCard 
-                key={movie.id} 
+            <MovieCardWrapper key={movie.id} >
+              <MovieCard 
                 movieInfo={movie} 
                 isShowTitle
                 isShowToWatchBtn
+                isEnableOverlay
               />
+            </MovieCardWrapper>
           )) : null}
         </MoviesContainer>
     )

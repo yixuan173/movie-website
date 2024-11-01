@@ -3,13 +3,17 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import './main.css'
 import App from './App.jsx'
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background-color: #000;
+  }
+  
+  #root {
+    display: flex;
+    justify-content: center;
   }
 `;
 
