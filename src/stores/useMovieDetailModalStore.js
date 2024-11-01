@@ -1,10 +1,8 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { create } from 'zustand';
 
-import fetchMovieDetail from "../streams/fetchMovieDetail.stream"
+import fetchMovieDetail from "../streams/fetchMovieDetail.stream";
 
-
-const useMovieDetailModalStore = create(devtools((set) => ({
+const useMovieDetailModalStore = create((set) => ({
     movieDetail: {},
     isOpen: false,
     isFetching: false,
@@ -15,6 +13,6 @@ const useMovieDetailModalStore = create(devtools((set) => ({
     },
     openModal: () => set({ isOpen: true}),
     closeModal: () => set({ isOpen: false})
-})))
+}))
 
 export default useMovieDetailModalStore;

@@ -1,3 +1,4 @@
+import { TMDB_API_PATH, TMDB_IMG_URL } from "../constants/api.constant";
 
 /**
  * 過濾重複 id 以及未有照片的人物資料
@@ -13,10 +14,24 @@ const filterUnusefulData = (arr) => {
   });
 }
 
-
+/**
+ * @typedef {Object} MovieDetail
+ * @property {number} id - 序號
+ * @property {string} title - 名稱
+ * @property {string} imgUrl - 電影海報網址
+ * @property {string} releaseDate - 發行日期
+ * @property {number} voteAverage - 評論平均得分
+ * @property {string} overview - 電影簡介
+ * @property {Object} credits - 卡司
+ */
+/**
+ * @description 取得電影詳細資訊
+ * @param {number} id - 電影序號
+ * @returns {MovieDetail} 
+ */
 const fetchMovieDetail = async (id) => {
     try {
-        const apiUrl = `https://api.themoviedb.org/3/movie/${id}?append_to_response=reviews,credits&language=en-US`;
+        const apiUrl = `${TMDB_API_PATH}movie/${id}?append_to_response=reviews,credits&language=en-US`;
         const options = {
             method: 'GET',
             headers: {
@@ -27,22 +42,22 @@ const fetchMovieDetail = async (id) => {
 
         const response = await fetch(apiUrl, options);
         if (response.status >= 400) {
-            throw new Error(`fetchMovieDetail Error: API Failed.`);
+            throw new Error(`fetchMovieDetail API Failed!`);
         }
         
         const data = await response.json();
         if (!data) {
-          throw new Error(`fetchMovieDetail Error: No Data.`);
+          throw new Error(`fetchMovieDetail Error: No data.`);
         }
 
       const { reviews, title, overview, poster_path, id: movieId, credits, release_date, vote_average } = data;
       const movieDetail = {
-        vote_average,
-        release_date,
+        imgUrl: `${TMDB_IMG_URL}${poster_path}`,
+        releaseDate: release_date,
+        voteAverage: vote_average,
         reviews,
         title,
         overview,
-        poster_path,
         id: movieId,
         credits: {
           cast: filterUnusefulData(credits?.cast),
@@ -52,7 +67,20 @@ const fetchMovieDetail = async (id) => {
 
       return movieDetail;
     } catch (error) {
-        return Promise.reject(error)
+        console.error(`fetchMovieDetail Failed: Reason: ${JSON.stringify(error)}`);
+        return {
+          imgUrl: "",
+          releaseDate: "",
+          voteAverage: 0,
+          reviews: "",
+          title: "",
+          overview: "",
+          id: null,
+          credits: {
+            cast: [],
+            crew: [],
+          },
+        }
     }
 }
 

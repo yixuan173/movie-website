@@ -1,10 +1,10 @@
 import { PersonImage, PersonInfo, CardWrapper } from "./style"
-
+import { TMDB_IMG_URL } from "../../constants/api.constant";
 
 const PersonCard = ({data}) => {
     return (
         <CardWrapper>
-            <PersonImage src={`https://image.tmdb.org/t/p/original${data.profile_path}`} alt={data.name}></PersonImage>
+            <PersonImage src={`${TMDB_IMG_URL}${data.profile_path}`} alt={data.name}></PersonImage>
             <PersonInfo>{data.name}</PersonInfo>
         </CardWrapper>
     )
