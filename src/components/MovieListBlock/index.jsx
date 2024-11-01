@@ -14,7 +14,7 @@ const MovieListBlock = ({movieList}) => {
         }
         fetchMovieDetail(id);
       }
-      console.log(movieList)
+
     return (
         <MoviesContainer>      
         {movieList?.length > 0 ? (
