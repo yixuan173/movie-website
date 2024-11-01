@@ -22,7 +22,7 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage, currentPage }) =
     }
 
     const newPageList = Array.from({ length: 5 }, (_, index) => {
-        if (currentPage >= totalPages - 4) {
+        if (currentPage > totalPages - 2) {
           return totalPages - 4 + index;
         } else {
           return currentPage - 2 + index;

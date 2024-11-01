@@ -1,12 +1,12 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect } from "react";
 
-import MovieListBlock from "../../components/MovieListBlock"
-import MovieListBlockSkeleton from "../../components/Skeleton/MovieListBlockSkeleton"
-import Pagination from "./Pagination"
-import SortSelect from "../../components/SortSelect"
-import useFetchSearchPageResultData from "./hooks/useFetchSearchResults"
-import { sortOptions } from "../../configs/sortOptions"
-import { Wapper, SearchBarWapper, SearchInput, SearchButton, SeatchResultWapper, SearchInfoBlock, SearchInfo, NoSearchResult } from "./style"
+import MovieListBlock from "../../components/MovieListBlock";
+import MovieListBlockSkeleton from "../../components/Skeleton/MovieListBlockSkeleton";
+import Pagination from "./Pagination";
+import SortSelect from "../../components/SortSelect";
+import useFetchSearchPageResultData from "./hooks/useFetchSearchResults";
+import { sortOptions } from "../../configs/sortOptions";
+import { Wapper, SearchBarWapper, SearchInput, SearchButton, SeatchResultWapper, SearchInfoBlock, SearchInfo, NoSearchResult } from "./style";
 
 const Search = () => {
   const [ keyword, setKeyword ] = useState("");
