@@ -1,15 +1,13 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { create } from 'zustand';
 
-import fetchMovies from "../streams/fetchMovies.stream"
+import fetchMovieList from "../streams/fetchMovieList.stream";
 
-
-const useMovieListStore = create(devtools((set) => ({
+const useMovieListStore = create((set) => ({
     movieList: [],
-    getMovieList: async () => {
-        const data = await fetchMovies();
-        set({ movieList: data});
+    fetchMovieList: async () => {
+        const movieList = await fetchMovieList();
+        set({ movieList});
     }
-})))
+}))
 
 export default useMovieListStore;

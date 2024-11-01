@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 
-import { PageTitle } from "./style"
-import useMovieListStore from "../../stores/useMovieListStore"
-import MovieListBlock from "../../components/MovieListBlock"
+import { PageTitle } from "./style";
+import useMovieListStore from "../../stores/useMovieListStore";
+import MovieListBlock from "../../components/MovieListBlock";
 
 
 const Home = () => {
   const movieList = useMovieListStore((state) => state.movieList)
-  const getMovieList = useMovieListStore((state) => state.getMovieList)
+  const fetchMovieList = useMovieListStore((state) => state.fetchMovieList)
 
   useEffect(() => {
     if (movieList.length > 0) return;
-    getMovieList();
+    fetchMovieList();
   }, []);
 
   return (
