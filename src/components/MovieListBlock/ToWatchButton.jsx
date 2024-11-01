@@ -3,7 +3,7 @@ import resetToWatchList from "../../stores/useToWatchListStore";
 
 
 const ToWatchButton = ({ movieInfo }) => {
-    const toWatchMovieIdSet = resetToWatchList((state) => state.toWatchMovieIdSet);
+    const toWatchMovieIdList = resetToWatchList((state) => state.toWatchMovieIdList);
     const addToWatchList = resetToWatchList((state) => state.addToWatchList);
     const removeToWatchList = resetToWatchList((state) => state.removeToWatchList);
 
@@ -19,7 +19,7 @@ const ToWatchButton = ({ movieInfo }) => {
     
     return (
         <ToWatchButtonWrapper>
-            {toWatchMovieIdSet.has(movieInfo.id) ? (
+            {new Set(toWatchMovieIdList).has(movieInfo.id) ? (
                 <ToWatchBtn onClick={handleRemoveToWatchLise}><ion-icon name="eye" size="large"></ion-icon></ToWatchBtn>
             ) : (
                 <ToWatchBtn onClick={handleAddToWatchLise}><ion-icon name="eye-off" size="large"></ion-icon></ToWatchBtn>

@@ -14,18 +14,18 @@ const MovieListBlock = ({movieList}) => {
         }
         fetchMovieDetail(id);
       }
-
+      console.log(movieList)
     return (
         <MoviesContainer>      
         {movieList?.length > 0 ? (
-          movieList.map(({id, poster_path, title}) => (
+          movieList.map(({id, poster_path, title, release_date, vote_average}) => (
             <MovieCardWapper key={id} onClick={() => handleClickMovie(id)}>
               <ImageWapper>
                 <MovieImage src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={title} />
                 <GradientOverlay />
               </ImageWapper>
               <MovieTitle>{title}</MovieTitle>
-              <ToWatchButton movieInfo={{id, poster_path, title}}/>
+              <ToWatchButton movieInfo={{id, poster_path, title, release_date, vote_average}}/>
             </MovieCardWapper>
           ))
         ) : null}

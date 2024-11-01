@@ -1,32 +1,35 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 const initialState = {
     toWatchList: [],
-    toWatchMovieIdSet: new Set(),
+    toWatchMovieIdList: [],
   }
 
-const useToWatchListStore = create(devtools((set) => ({
+const useToWatchListStore = create(persist((set) => ({
     ...initialState,
     addToWatchList: (movieInfo) => {
         set((state) => ({
             toWatchList: [...state.toWatchList, movieInfo],
-            toWatchMovieIdSet: new Set(state.toWatchMovieIdSet).add(movieInfo.id)
+            toWatchMovieIdList: [...state.toWatchMovieIdList, movieInfo.id],
         }))
     },
     removeToWatchList: (movieId) => {
         set((state) => {
-            const newToWatchMovieIdSet = new Set(state.toWatchMovieIdSet);
+            const newToWatchMovieIdSet = new Set(state.toWatchMovieIdList);
             newToWatchMovieIdSet.delete(movieId);
             return {
                 toWatchList: state.toWatchList.filter((movie) => movie.id !== movieId),
-                toWatchMovieIdSet: newToWatchMovieIdSet
+                toWatchMovieIdList: [...newToWatchMovieIdSet]
             };
         })
     },
     resetToWatchList: () => {
         set(initialState)
     },
-})))
+}), {
+    name: 'toWatchList',
+    storage: createJSONStorage(() => localStorage),
+}))
 
 export default useToWatchListStore;
