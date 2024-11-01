@@ -18,9 +18,10 @@ const slideAnimation = ({ $length }) =>  keyframes`
 
 export const SliderTrack = styled.div`
     display: flex;
-    transition: transform 1s ease;
+    ${({ $length }) => css`transition: transform ${$length / 8}s ease;`}
+    
 
-    ${({ $isSliding }) => $isSliding && css`animation: ${slideAnimation} 1s linear infinite;`}
+    ${({ $isSliding, $length }) => $isSliding && css`animation: ${slideAnimation} ${$length / 8}s linear infinite;`}
     ${({ $stopIndex }) => $stopIndex !== null && css`transform: translateX(${({ $stopIndex }) => $stopIndex === 0 ? '50px' : `-${($stopIndex * 200) - 50}px`});`}   
 `;
 
