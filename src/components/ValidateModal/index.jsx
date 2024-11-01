@@ -2,8 +2,6 @@ import Modal from "react-modal";
 import { useState } from "react"
 
 import useValidateModalStore from "../../stores/useValidateModalStore";
-// import { MovieImage, Content, } from "./style";
-
 
 const ModalContainer = {
     content: {
@@ -37,7 +35,6 @@ const ValidateModal = () => {
       }
     };
 
-
     return (
         <Modal
         isOpen={isOpen}
@@ -67,7 +64,6 @@ const ValidateModal = () => {
         </div>
       </Modal>
     )
-
 };
 
 export default ValidateModal;
