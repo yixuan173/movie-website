@@ -33,8 +33,9 @@ export const InfoText = styled.span`
 `;
 
 export const PersonImage = styled.img`
+    background-color: #e9ecef;
     width: 120px;
-    height: 100%;
+    height: 180px;
     object-fit: cover;
 `;
 
