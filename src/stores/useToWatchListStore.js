@@ -24,8 +24,8 @@ const useToWatchListStore = create(persist((set) => ({
             };
         })
     },
-    resetToWatchList: () => {
-        set(initialState)
+    sortToWatchList: (sortedToWatchList) => {
+        set(() => ({toWatchList: sortedToWatchList}))
     },
 }), {
     name: 'toWatchList',

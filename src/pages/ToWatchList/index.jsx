@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
 import { PageTitle, MovieListHeaderWrapper, MovieListWrapper, LotteryDisplayHint } from "./style";
-import MovieListBlock from "../../components/MovieListBlock"
-import DragMovieList from "./DragMovieList"
+import DragMovieList from "./DragMovieList";
 import useToWatchListStore from "../../stores/useToWatchListStore";
 import SortSelect from "../../components/SortSelect";
-import { sortOptions } from "../../configs/sortOptions"
-import { handleSortedSearchResults } from "../../utilities/sortMovie.utility"
+import { sortOptions } from "../../configs/sortOptions";
+import { handleSortedSearchResults } from "../../utilities/sortMovie.utility";
 import Lottery from "./Lottery";
 
 const ToWatchList = () => {
@@ -36,7 +35,6 @@ const ToWatchList = () => {
           <SortSelect selectedSort={selectedSort} setSelectedSort={setSelectedSort} options={sortOptions}/>
         </MovieListHeaderWrapper>
         <DragMovieList movieList={toWatchList}  />
-        {/* <MovieListBlock movieList={displayToWatchList} /> */}
       </MovieListWrapper>
     </div>
   );
