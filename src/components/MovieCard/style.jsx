@@ -51,7 +51,8 @@ export const ToWatchButtonWrapper = styled.div`
 
 export const ToWatchBtn = styled.button`
     color: #fff;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.6);
     border: none;
     cursor: pointer;
+    border-bottom-left-radius: 16px; 
 `;

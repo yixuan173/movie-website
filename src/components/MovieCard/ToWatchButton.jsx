@@ -22,7 +22,7 @@ const ToWatchButton = ({ movieInfo }) => {
             {new Set(toWatchMovieIdList).has(movieInfo.id) ? (
                 <ToWatchBtn onClick={handleRemoveToWatchLise}><ion-icon name="eye" size="large"></ion-icon></ToWatchBtn>
             ) : (
-                <ToWatchBtn onClick={handleAddToWatchLise}><ion-icon name="eye-off" size="large"></ion-icon></ToWatchBtn>
+                <ToWatchBtn onClick={handleAddToWatchLise}><ion-icon name="eye-outline" size="large"></ion-icon></ToWatchBtn>
             )}
         </ToWatchButtonWrapper>
     )
