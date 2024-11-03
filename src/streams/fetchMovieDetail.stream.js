@@ -1,4 +1,6 @@
 import { TMDB_API_PATH, TMDB_IMG_URL } from "../constants/api.constant";
+import { TOAST_ERROR } from "../constants/toast.constant"
+import { openToast } from "../utilities/toast.utility"
 
 /**
  * 過濾重複 id 以及未有照片的人物資料
@@ -65,21 +67,28 @@ const fetchMovieDetail = async (id) => {
         },
       }
 
-      return movieDetail;
+      return {
+        data: movieDetail,
+        isSuccess: true,
+      } ;
     } catch (error) {
-        console.error(`fetchMovieDetail Failed: Reason: ${JSON.stringify(error)}`);
+        console.error("fetchMovieDetail Failed: Reason:", error);
+        openToast(TOAST_ERROR, "系統忙碌中，請稍後再試")
         return {
-          imgUrl: "",
-          releaseDate: "",
-          voteAverage: 0,
-          reviews: "",
-          title: "",
-          overview: "",
-          id: null,
-          credits: {
-            cast: [],
-            crew: [],
+          data: {
+            imgUrl: "",
+            releaseDate: "",
+            voteAverage: 0,
+            reviews: "",
+            title: "",
+            overview: "",
+            id: null,
+            credits: {
+              cast: [],
+              crew: [],
+            },
           },
+          isSuccess: false,
         }
     }
 }

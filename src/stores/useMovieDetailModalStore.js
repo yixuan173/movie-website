@@ -8,8 +8,8 @@ const useMovieDetailModalStore = create((set) => ({
     isFetching: false,
     fetchMovieDetail: async (id) => {
         set({ isFetching: true});
-        const data = await fetchMovieDetail(id);
-        set({ movieDetail: data, isOpen: true, isFetching: false});
+        const { data, isSuccess } = await fetchMovieDetail(id);
+        set({ movieDetail: data, isOpen: isSuccess, isFetching: false});
     },
     openModal: () => set({ isOpen: true}),
     closeModal: () => set({ isOpen: false})
