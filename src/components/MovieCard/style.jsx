@@ -5,6 +5,7 @@ export const MovieCardWapper = styled.div`
     display: flex;
     position: relative;
     flex-direction: column;
+    cursor: pointer;
 `;
 
 export const MovieTitle = styled.p`

@@ -6,7 +6,7 @@ import DragMovieCard from "./DragMovieCard";
 import useToWatchListStore from "../../stores/useToWatchListStore"
 
 
-const DragMovieList = ({ movieList }) => {
+const DragMovieList = ({ movieList, isCustomSort }) => {
     const sortToWatchList = useToWatchListStore((state) => state.sortToWatchList);
 
     const handleDragEnd = (e) => {
@@ -20,7 +20,7 @@ const DragMovieList = ({ movieList }) => {
             <MoviesContainer>  
                 <SortableContext items={movieList}>
                     {movieList?.length > 0 ? movieList.map((movie, index) => (
-                        <DragMovieCard key={movie.id} movie={movie} movieIndex={index} />
+                        <DragMovieCard key={movie.id} movie={movie} movieIndex={index} isCustomSort={isCustomSort} />
                     )) : null}
                 </SortableContext>
             </MoviesContainer>

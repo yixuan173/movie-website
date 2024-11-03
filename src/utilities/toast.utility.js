@@ -1,6 +1,6 @@
 import { toast, Zoom } from 'react-toastify';
 
-import { TOAST_SUCCESS, TOAST_ERROR } from "../constants/toast.constant"
+import { TOAST_SUCCESS, TOAST_ERROR, TOAST_INFO } from "../constants/toast.constant"
 
 const defaultOptions = {
     position: "top-center",
@@ -26,6 +26,13 @@ export const openToast = (type, msg, options) => {
         }
         case TOAST_ERROR: {
             toast.error(msg, {
+                ...defaultOptions,
+                ...options
+             });
+             break;
+        }
+        case TOAST_INFO: {
+            toast.info(msg, {
                 ...defaultOptions,
                 ...options
              });

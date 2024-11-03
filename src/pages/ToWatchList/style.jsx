@@ -95,3 +95,27 @@ export const LotteryButton = styled.button`
         visibility: hidden;
     }
 `;
+
+export const SortControllWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`;
+
+export const ChangeSortTypeButton = styled.button`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+`;
+
+export const CustomHint = styled.span`
+    color: yellow;
+    font-size: 20px;
+    font-weight: bolder;
+`;
+

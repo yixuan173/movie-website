@@ -5,9 +5,10 @@ import { MovieCardWrapper } from "../../components/MovieListBlock/style";
 import MovieCard from "../../components/MovieCard";
 
 
-const DragMovieCard = ({ movie, movieIndex }) => {
+const DragMovieCard = ({ movie, movieIndex, isCustomSort }) => {
     const {attributes, listeners, transform, transition, setNodeRef, isDragging} = useSortable({
         id: movie.id, 
+        disabled: !isCustomSort,
         data: {
             index: movieIndex,
         },
