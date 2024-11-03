@@ -20,7 +20,7 @@ export const SliderTrack = styled.div`
     display: flex;
     ${({ $length }) => css`transition: transform ${$length / 8}s ease;`}
     
-
+    ${({ $isSliding, $length, $stopIndex }) => !$isSliding && $stopIndex === null && css`animation: ${slideAnimation} ${$length}s linear infinite;`}
     ${({ $isSliding, $length }) => $isSliding && css`animation: ${slideAnimation} ${$length / 8}s linear infinite;`}
     ${({ $stopIndex }) => $stopIndex !== null && css`transform: translateX(${({ $stopIndex }) => $stopIndex === 0 ? '50px' : `-${($stopIndex * 200) - 50}px`});`}   
 `;
