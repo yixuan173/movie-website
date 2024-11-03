@@ -2,28 +2,21 @@ import { useEffect, useState } from "react";
 
 import { PageTitle, MovieListHeaderWrapper, MovieListWrapper, LotteryDisplayHint } from "./style";
 import MovieListBlock from "../../components/MovieListBlock"
-import resetToWatchList from "../../stores/useToWatchListStore";
+import DragMovieList from "./DragMovieList"
+import useToWatchListStore from "../../stores/useToWatchListStore";
 import SortSelect from "../../components/SortSelect";
 import { sortOptions } from "../../configs/sortOptions"
 import { handleSortedSearchResults } from "../../utilities/sortMovie.utility"
 import Lottery from "./Lottery";
 
 const ToWatchList = () => {
-  const toWatchList = resetToWatchList((state) => state.toWatchList);
+  const toWatchList = useToWatchListStore((state) => state.toWatchList);
+  const sortToWatchList = useToWatchListStore((state) => state.sortToWatchList);
   const [ selectedSort, setSelectedSort ] = useState(null);
-  const [ displayToWatchList, setDisplayToWatchList ] = useState([]);
 
   useEffect(() => {
     if (selectedSort) {
-      handleSortedSearchResults(toWatchList, selectedSort, setDisplayToWatchList);
-    } else {
-      setDisplayToWatchList(toWatchList);
-    }
-  }, [ toWatchList ])
-
-  useEffect(() => {
-    if (selectedSort) {
-      handleSortedSearchResults(toWatchList, selectedSort, setDisplayToWatchList)
+      handleSortedSearchResults(toWatchList, selectedSort, sortToWatchList)
     }
   }, [ selectedSort ])
 
@@ -42,7 +35,8 @@ const ToWatchList = () => {
           <PageTitle> 待看清單 </PageTitle>
           <SortSelect selectedSort={selectedSort} setSelectedSort={setSelectedSort} options={sortOptions}/>
         </MovieListHeaderWrapper>
-        <MovieListBlock movieList={displayToWatchList} />
+        <DragMovieList movieList={toWatchList}  />
+        {/* <MovieListBlock movieList={displayToWatchList} /> */}
       </MovieListWrapper>
     </div>
   );
