@@ -1,4 +1,6 @@
 import { TMDB_API_PATH, TMDB_IMG_URL } from "../constants/api.constant";
+import { TOAST_ERROR } from "../constants/toast.constant";
+import { openToast } from "../utilities/toast.utility";
 
 const mappingMovieList = (results) => {
     if (results?.length === 0) return [];
@@ -47,7 +49,8 @@ const fetchMovieList = async () => {
 
         return mappingMovieList(data.results);
     } catch (error) {
-        console.error(`fetchMovieList Failed: Reason: ${JSON.stringify(error)}`);
+        console.error("fetchMovieList Failed: Reason: ", error);
+        openToast(TOAST_ERROR, "系統忙碌中，請稍後再試");
         return [];
     }
 }
