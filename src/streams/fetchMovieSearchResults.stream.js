@@ -1,4 +1,6 @@
 import { TMDB_IMG_URL, TMDB_API_PATH } from "../constants/api.constant";
+import { TOAST_ERROR } from "../constants/toast.constant";
+import { openToast } from "../utilities/toast.utility";
 
 const mappingMovieSearchResults = (results) => {
   if (results?.length === 0) return [];
@@ -57,7 +59,8 @@ const fetchMovieSearchResults = async (keyword, page) => {
         totalResults: data.total_results
       };
   } catch (error) {
-      console.error(`fetchMovieSearchResults Failed: Reason: ${JSON.stringify(error)}`);
+      console.error("fetchMovieSearchResults Failed: Reason: ", error);
+      openToast(TOAST_ERROR, "系統忙碌中，請稍後再試");
       return {
         results: [],
         totalResults: 0
