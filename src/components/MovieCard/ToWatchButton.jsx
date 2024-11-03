@@ -1,5 +1,7 @@
 import { ToWatchButtonWrapper, ToWatchBtn } from "./style";
 import resetToWatchList from "../../stores/useToWatchListStore";
+import { openToast } from "../../utilities/toast.utility"
+import { TOAST_SUCCESS } from "../../constants/toast.constant"
 
 
 const ToWatchButton = ({ movieInfo }) => {
@@ -10,11 +12,13 @@ const ToWatchButton = ({ movieInfo }) => {
     const handleRemoveToWatchLise = (e) => {
         e.stopPropagation();
         removeToWatchList(movieInfo.id);
+        openToast(TOAST_SUCCESS, "移除待看清單成功");
     }
 
     const handleAddToWatchLise = (e) => {
         e.stopPropagation();
         addToWatchList(movieInfo);
+        openToast(TOAST_SUCCESS, "加入待看清單成功");
     }
     
     return (
