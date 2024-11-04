@@ -270,15 +270,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,fm=G.h1`
     color: #fff;
 `,pm=({$length:e})=>Jb`
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * ${e}));}
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(calc(-200px * ${e}), 0, 0);}
 `,tT=G.div`
     display: flex;
     ${({$length:e})=>Nn`transition: transform ${e/8}s ease;`}
     
     ${({$isSliding:e,$length:t,$stopIndex:n})=>!e&&n===null&&Nn`animation: ${pm} ${t}s linear infinite;`}
     ${({$isSliding:e,$length:t})=>e&&Nn`animation: ${pm} ${t/8}s linear infinite;`}
-    ${({$stopIndex:e})=>e!==null&&Nn`transform: translateX(${({$stopIndex:t})=>t===0?"50px":`-${t*200-50}px`});`}   
+    ${({$stopIndex:e})=>e!==null&&Nn`transform: translate3d(${({$stopIndex:t})=>t===0?"50px":`-${t*200-50}px`}, 0, 0);`}   
 `,nT=G.div`
     margin: 0 auto;
     display: flex;
