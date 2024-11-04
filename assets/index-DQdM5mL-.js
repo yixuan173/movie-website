@@ -292,6 +292,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     height: 300px;
     border-radius: 16px;
     transition: transform 0.5s ease;
+    transform: translate3d(0, 0, 0);
     ${({$isSelected:e})=>e&&Nn`
             z-index: 2;  
             transform: scale(1.2);
