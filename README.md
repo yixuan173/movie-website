@@ -15,10 +15,7 @@
 
 拉取後先 `npm install`，之後在專案根目錄下建立 `.env` 檔案，裡面會需要放置跟密碼相關的變數。  
   
-`PASSWORD`：一開始的頁面驗證密碼  
-`API_TOKEN`：TMDB API 申請的 token  
-  
-![展示](https://github.com/yixuan173/movie-website/blob/main/public/env%20%E6%AA%94%E6%A1%88%E7%A4%BA%E4%BE%8B.png?raw=true)
+`VITE_API_TOKEN`：TMDB API 申請的 token
 
 
 ##  使用套件
