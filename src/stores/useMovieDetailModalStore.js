@@ -2,16 +2,19 @@ import { create } from 'zustand';
 
 import fetchMovieDetail from "../streams/fetchMovieDetail.stream";
 
-const useMovieDetailModalStore = create((set) => ({
+const useMovieDetailModalStore = create((set, get) => ({
     movieDetail: {},
     isOpen: false,
     isFetching: false,
-    fetchMovieDetail: async (id) => {
+    handleOpenModal: async (id) => {
         set({ isFetching: true});
-        const { data, isSuccess } = await fetchMovieDetail(id);
-        set({ movieDetail: data, isOpen: isSuccess, isFetching: false});
+        if (get().movieDetail.id === id) {
+            set({ isOpen: true, isFetching: false});
+        } else {
+            const { data, isSuccess } = await fetchMovieDetail(id);
+            set({ movieDetail: data, isOpen: isSuccess, isFetching: false});
+        }
     },
-    openModal: () => set({ isOpen: true}),
     closeModal: () => set({ isOpen: false})
 }))
 

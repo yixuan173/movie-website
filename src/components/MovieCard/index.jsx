@@ -3,21 +3,15 @@ import { MovieImage, GradientOverlay, MovieTitle, ImageWapper, MovieCardWapper }
 import useMovieDetailModalStore from "../../stores/useMovieDetailModalStore";
 
 const MovieCard = ({ movieInfo, isShowTitle, isShowToWatchBtn, isEnableOverlay }) => {
-    const fetchMovieDetail = useMovieDetailModalStore((state) => state.fetchMovieDetail)
-    const movieDetail = useMovieDetailModalStore((state) => state.movieDetail)
-    const openModal = useMovieDetailModalStore((state) => state.openModal)
+    const handleOpenModal = useMovieDetailModalStore((state) => state.handleOpenModal)
     const { id, imgUrl, title } = movieInfo;
 
-    const handleClickMovie = (id) => {
-        if (movieDetail?.id === id) {
-          openModal();
-          return;
-        }
-        fetchMovieDetail(id);
-      }
+    const handleClickMovieCard = (id) => {
+      handleOpenModal(id);
+    }
 
     return (
-        <MovieCardWapper key={id} onClick={() => handleClickMovie(id)}>
+        <MovieCardWapper key={id} onClick={() => handleClickMovieCard(id)}>
             <ImageWapper>
             <MovieImage src={imgUrl} alt={title} />
             {isEnableOverlay && <GradientOverlay />}
