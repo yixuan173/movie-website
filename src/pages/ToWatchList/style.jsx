@@ -40,6 +40,7 @@ export const LotteryCardWapper = styled.div`
     height: 300px;
     border-radius: 16px;
     transition: transform 0.5s ease;
+    transform: translate3d(0, 0, 0);
     ${({ $isSelected }) => $isSelected &&
         css`
             z-index: 2;  
