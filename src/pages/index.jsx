@@ -7,8 +7,6 @@ import Home from './Home';
 import Search from './Search';
 import ToWatchList from './ToWatchList';
 import MovieDetailModal from '../components/MovieDetailModal';
-import ValidateModal from '../components/ValidateModal';
-import useValidateModalStore from "../stores/useValidateModalStore";
 
 
 const Header = styled.div`
@@ -28,42 +26,35 @@ const Icon = styled.div`
 `;
 
 function App() {
-  const isPass = useValidateModalStore((state) => state.isPass)
   return (
-    <>
-      {!isPass ? (
-        <ValidateModal />
-      ) : (
-        <div>
-          <Header>
-            <Link to="/">        
-              <Icon>
-                <ion-icon name="home" size="large"></ion-icon>
-              </Icon>
-            </Link>
-            <Link to="/search">        
-              <Icon>
-                <ion-icon name="search" size="large"></ion-icon>
-              </Icon>
-            </Link>
-            <Link to="/toWatchList">        
-              <Icon>
-              <ion-icon name="list" size="large"></ion-icon>
-              </Icon>
-            </Link>
-          </Header>
-          <Content>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/search' element={<Search />} />
-              <Route path='/toWatchList' element={<ToWatchList />} />
-            </Routes>
-          </Content>
-          <MovieDetailModal /> 
-          <ToastContainer />  
-        </div>
-      )}
-    </>
+    <div>
+      <Header>
+        <Link to="/">        
+          <Icon>
+            <ion-icon name="home" size="large"></ion-icon>
+          </Icon>
+        </Link>
+        <Link to="/search">        
+          <Icon>
+            <ion-icon name="search" size="large"></ion-icon>
+          </Icon>
+        </Link>
+        <Link to="/toWatchList">        
+          <Icon>
+          <ion-icon name="list" size="large"></ion-icon>
+          </Icon>
+        </Link>
+      </Header>
+      <Content>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search' element={<Search />} />
+          <Route path='/toWatchList' element={<ToWatchList />} />
+        </Routes>
+      </Content>
+      <MovieDetailModal /> 
+      <ToastContainer />  
+    </div>
   )
 }
 

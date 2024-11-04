@@ -40,7 +40,7 @@ const fetchMovieSearchResults = async (keyword, page) => {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: `${process.env.API_TOKEN}`,
+            Authorization: `${import.meta.env.VITE_API_TOKEN}`,
           }
       };
 

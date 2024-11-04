@@ -38,7 +38,7 @@ const fetchMovieDetail = async (id) => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: `${process.env.API_TOKEN}`,
+              Authorization: `${import.meta.env.VITE_API_TOKEN}`,
             }
         };
 
