@@ -12,8 +12,8 @@ export const PageTitle = styled.h1`
 `;
 
 const slideAnimation = ({ $length }) =>  keyframes`
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * ${$length}));}
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(calc(-200px * ${$length}), 0, 0);}
 `;
 
 export const SliderTrack = styled.div`
@@ -22,7 +22,7 @@ export const SliderTrack = styled.div`
     
     ${({ $isSliding, $length, $stopIndex }) => !$isSliding && $stopIndex === null && css`animation: ${slideAnimation} ${$length}s linear infinite;`}
     ${({ $isSliding, $length }) => $isSliding && css`animation: ${slideAnimation} ${$length / 8}s linear infinite;`}
-    ${({ $stopIndex }) => $stopIndex !== null && css`transform: translateX(${({ $stopIndex }) => $stopIndex === 0 ? '50px' : `-${($stopIndex * 200) - 50}px`});`}   
+    ${({ $stopIndex }) => $stopIndex !== null && css`transform: translate3d(${({ $stopIndex }) => $stopIndex === 0 ? '50px' : `-${($stopIndex * 200) - 50}px`}, 0, 0);`}   
 `;
 
 export const SliderContainer = styled.div`
