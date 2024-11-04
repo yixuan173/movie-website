@@ -57,13 +57,14 @@ export const LotteryDisplayHint = styled.p`
 `;
 
 export const MovieListHeaderWrapper = styled.div`
+    margin-top: 40px;
     margin-bottom: 10px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    @media (max-width: 350px) {
+    @media (max-width: 560px) {
         flex-direction: column;
         margin-bottom: 30px;
     }

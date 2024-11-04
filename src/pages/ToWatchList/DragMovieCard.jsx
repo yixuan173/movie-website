@@ -32,7 +32,7 @@ const DragMovieCard = ({ movie, movieIndex, isCustomSort }) => {
             <MovieCard 
                 movieInfo={movie} 
                 isShowTitle
-                isShowToWatchBtn
+                isShowToWatchBtn={!isCustomSort}
                 isEnableOverlay
             />
         </MovieCardWrapper>

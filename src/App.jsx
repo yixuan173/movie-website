@@ -1,5 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import Home from './pages/Home';
@@ -58,7 +60,8 @@ function App() {
               <Route path='/toWatchList' element={<ToWatchList />} />
             </Routes>
           </Content>
-          <MovieDetailModal />   
+          <MovieDetailModal /> 
+          <ToastContainer />  
         </div>
       )}
     </>
