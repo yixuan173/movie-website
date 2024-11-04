@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 
 import MovieListBlock from "../../components/MovieListBlock";
 import MovieListBlockSkeleton from "../../components/Skeleton/MovieListBlockSkeleton";
-import Pagination from "./Pagination";
+import Pagination from "./components/Pagination";
 import SortSelect from "../../components/SortSelect";
 import useFetchSearchPageResultData from "./hooks/useFetchSearchResults";
 import { sortOptions } from "../../configs/sortOptions";

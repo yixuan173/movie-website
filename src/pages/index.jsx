@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-import Home from './pages/Home';
-import Search from './pages/Search';
-import ToWatchList from './pages/ToWatchList';
-import MovieDetailModal from './components/MovieDetailModal';
-import ValidateModal from './components/ValidateModal';
-import useValidateModalStore from "./stores/useValidateModalStore";
+import Home from './Home';
+import Search from './Search';
+import ToWatchList from './ToWatchList';
+import MovieDetailModal from '../components/MovieDetailModal';
+import ValidateModal from '../components/ValidateModal';
+import useValidateModalStore from "../stores/useValidateModalStore";
 
 
 const Header = styled.div`

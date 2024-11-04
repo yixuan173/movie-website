@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
-import App from './App.jsx'
+import App from './pages'
 
 const GlobalStyle = createGlobalStyle`
   body {

@@ -1,9 +1,9 @@
 import { closestCorners, DndContext } from "@dnd-kit/core"
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 
-import { MoviesContainer } from "../../components/MovieListBlock/style";
+import { MoviesContainer } from "../../../components/MovieListBlock/style";
 import DragMovieCard from "./DragMovieCard";
-import useToWatchListStore from "../../stores/useToWatchListStore"
+import useToWatchListStore from "../../../stores/useToWatchListStore"
 
 
 const DragMovieList = ({ movieList, isCustomSort }) => {

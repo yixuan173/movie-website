@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { PaginationWrapper, Arrow, PaginationItem } from "./style";
+import { PaginationWrapper, Arrow, PaginationItem } from "../style";
 
 const Pagination = ({ totalItems, itemsPerPage, setCurrentPage, currentPage }) => {
   const [showPageList, setShowPageList] = useState([]);

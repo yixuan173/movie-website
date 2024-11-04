@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { SliderContainer, LotteryCardWapper, SliderTrack, LotteryButton, LotteryWrapper } from "./style";
-import MovieCard from "../../components/MovieCard";
+import { SliderContainer, LotteryCardWapper, SliderTrack, LotteryButton, LotteryWrapper } from "../style";
+import MovieCard from "../../../components/MovieCard";
 
 
 const Lottery = ({ movieList }) => {

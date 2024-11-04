@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { PageTitle, MovieListHeaderWrapper, MovieListWrapper, LotteryDisplayHint, ChangeSortTypeButton, SortControllWrapper, CustomHint } from "./style";
-import DragMovieList from "./DragMovieList";
+import DragMovieList from "./components/DragMovieList";
 import useToWatchListStore from "../../stores/useToWatchListStore";
 import SortSelect from "../../components/SortSelect";
 import { sortOptions } from "../../configs/sortOptions";
 import { handleSortedSearchResults } from "../../utilities/sortMovie.utility";
-import Lottery from "./Lottery";
+import Lottery from "./components/Lottery";
 import { openToast } from "../../utilities/toast.utility"
 import { TOAST_INFO } from "../../constants/toast.constant"
 

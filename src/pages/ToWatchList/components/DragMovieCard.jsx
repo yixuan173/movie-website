@@ -1,8 +1,8 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { MovieCardWrapper } from "../../components/MovieListBlock/style";
-import MovieCard from "../../components/MovieCard";
+import { MovieCardWrapper } from "../../../components/MovieListBlock/style";
+import MovieCard from "../../../components/MovieCard";
 
 
 const DragMovieCard = ({ movie, movieIndex, isCustomSort }) => {
